@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<title>Home page</title>
+<style>
+  .iconify { width: 20px; height: 20px; }
+  html{
+ scroll-behavior: smooth;
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{{url_for('static', filename='styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body id="top" onload="appeardiv()">
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div  class="bgded overlay "  style="background-image:url('{{url_for('static', filename='img/demo/img11.jpg')}}');"> 
+  <!-- ################################################################################################ -->
+  <div class="wrapper row1" style="display:none;" id="prova1" >
+    <header id="header" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <div id="logo" class="fl_left">
+        <h1><a href="/index?name={{name}}">SHOPIFY</a></h1>
+      </div>
+   <ul class="list-group" id="result"></ul>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear"> 
+          <li class="active"><a href="/index?name={{name}}">HOME</a></li>
+          <li><a class="drop" href="#">Hello {{name}}</a>
+            <ul>
+              <li><a href="/track_order">TRACK ORDER</a></li>
+              <li><a href="/">LOGOUT</a></li>
+            </ul>
+          </li>
+          
+                                
+          <li><a href="#footer">CONTACT US</a></li>
+          <li ><a href="/cart_details">CART
+                                    <span  class="iconify" data-icon="typcn-shopping-cart" data-inline="false"></span><sup style="font-color:pink;width:200%;height:200%;background-color: white;" >{{cart_no}}</sup>
+                                    
+
+                                </a></li>
+        </ul>
+      </nav>
+      <!-- ################################################################################################ -->
+    </header>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div id="pageintro" class="hoc clear" > 
+    <!-- ################################################################################################ -->
+    <div class="flexslider basicslider " id="slider"   >
+      <ul class="slides">
+        <li>
+          <article  >
+            <h3 class="heading">WELCOME!</h3>
+            <p>Cannot step out of the house due to quarantine? </p>
+            <p>Dont worry, we have got your back. </p>
+            <footer><a class="btn" href="#products">SHOP NOW</a></footer>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3 class="heading">SALE! SALE! SALE!</h3>
+            <p>Grab the products at UPTO 50% OFF. Hurry now!</p>
+            <footer><a class="btn inverse" href="#products">SHOP NOW</a></footer>
+          </article>
+        </li>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </div>
+  <!-- ################################################################################################ -->
+</div>
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper" style="display:none;" id="prova2">
+  <div class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <figure id="introblocks">
+      <ul class="nospace group">
+        <li class="one_third first"><a href="#"><img src="{{url_for('static', filename='img/demo/img4.jpeg')}}" alt=""></a></li>
+        <li class="one_third"><a href="#"><img src="{{url_for('static', filename='img/demo/img5.jpeg')}}" alt=""></a></li>
+        <li class="one_third"><a href="#"><img src="{{url_for('static', filename='img/demo/img10.jpeg')}}" alt="" height="100" max-width="200"></a></li>
+      </ul>
+    </figure>
+    <p class="center"><a class="btn" href="#products">Click here to view all the products</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    {%if (top_products)!=1 %}
+    <article class="group btmspace-80">
+      <div class="two_third first" id="prova3" style="display:none;" ></div>
+      <div class="one_third">
+        
+        <h6 class="heading">PRODUCT OF THE DAY!</h6>
+        <p id="prod1"></p>
+        <p class="btmspace-30" id="prod2"></p>
+        <footer class="nospace"><a class="btn" href="/product1?productId={{top_products[-3]}}">VIEW THE PRODUCT &raquo;</a></footer>
+        
+      </div>
+    </article>
+    {%endif%}
+    <!-- ################################################################################################ -->
+    <hr class="btmspace-80">
+    <!-- ################################################################################################ -->
+    <ul class="nospace group overview" id="products">
+      {% for item in product %}
+      <li class="one_third" style="display: flex;">
+        <article><a href="#"><img src="{{url_for('static', filename='img/'+item[-1])}}" style="width:55%;max-height:12em;min-height:12em "  alt=""></a>
+          <h6 class="heading">{{ item[1] }}</h6>
+          <p>{{ item[2] }} &hellip;</p>
+          <footer class="nospace"><a class="btn" href="/product1?productId={{item[0]}}">VIEW &raquo;</a></footer>
+        </article>
+      </li>
+      {% endfor %}
+    </ul>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper bgded overlay coloured" style="background-color: pink; ">
+  <article class="hoc cta clear"> 
+    <!-- ################################################################################################ -->
+    <h6 class="three_quarter first">IF YOU CAN'T STOP THINKING ABOUT IT, THEN BUY IT! </h6>
+    <footer class="one_quarter"><a class="btn" href="/cart_details">Go to CART &raquo;</a></footer>
+    <!-- ################################################################################################ -->
+  </article>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">CONTACT US</h6>
+      <ul class="nospace btmspace-30 linklist contact">
+        <li><i class="fa fa-map-marker"></i>
+          <address>
+          BTM Layout &amp; 7th main, Bangalore, 560076
+          </address>
+        </li>
+        <li><i class="fa fa-phone"></i> +91 93471289132</li>
+        <li><i class="fa fa-envelope-o"></i> ecom@gmail.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Scared to buy online?</h6>
+      <p class="nospace btmspace-15">Carefully picked products. It is delivered by our trusted employees. The products are sold at your doorstep without the hassle of stepping out of your house. If you have any problem with the product, please feel free to send an email and you'll get a new product in exchange. T&C apply. </p>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">How to buy?</h6>
+      <p class="nospace btmspace-15">Click on the product you like and add to cart if you want to buy it later. Or click on buy now. There are a variety of products in this website. Choose the products you like and buy now. </p>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">New products?</h6>
+      <p class="nospace btmspace-15">To get notified about new products, please enter your name and email here.</p>
+      <form method="get" action="#">
+        <fieldset>
+          <legend>Newsletter:</legend>
+          <input class="btmspace-15" type="text" value="" placeholder="Name">
+          <input class="btmspace-15" type="text" value="" placeholder="Email">
+          
+        </fieldset>
+        </form>
+        <button   href="#" value="submit">Submit</button>
+      
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{{url_for('static', filename='scripts/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='scripts/jquery.backtotop.js')}}"></script>
+<script src="{{url_for('static', filename='scripts/jquery.mobilemenu.js')}}"></script>
+<script src="{{url_for('static', filename='scripts/jquery.flexslider-min.js')}}"></script>
+<script src="https://code.iconify.design/1/1.0.5/iconify.min.js"></script>
+
+</body>
+
+
+<script type="text/javascript">
+  xhr=new XMLHttpRequest();
+   var n=2;
+  function appeardiv() {
+            fetch();
+            setTimeout(function(){
+      // Display the div containing the class "bottomdiv"
+      $("#prova1").show();
+   }, 800);
+
+            appeardiv2();
+
+        };
+        function appeardiv2() {
+            
+            setTimeout(function(){
+      // Display the div containing the class "bottomdiv"
+      $("#prova2").show();
+   }, 1000);
+           setTimeout(appeardiv3,800); 
+
+        }
+        function appeardiv3() {
+            
+            setTimeout(function(){
+      // Display the div containing the class "bottomdiv"
+      $("#prova3").show();
+   }, 1000);
+            
+            //setTimeout(appeardiv4,1000); 
+
+        }
+
+   function fetch(){
+     xhr.onreadystatechange=showProduct;
+     xhr.timeout=6000;
+     xhr.ontimeout=backoff;
+     xhr.open("GET","/get_image",true);
+     xhr.send();
+     //var dataGet = $.get('/get_image');
+    //   dataGet.done(function(results){
+    //     $("#image1").attr("src",results.img);
+
+    //     console.log(results.img);
+    //     $("#prod1").text(results.pname);
+    //     $("#prod2").text(results.des);
+    // });
+    //   setTimeout(fetch,2000);
+   }
+   function showProduct(){
+     if(xhr.readyState==4 && xhr.status==200){
+       var res=xhr.responseText;
+       var resArr=res.split(";");
+       document.getElementById("prova3").innerHTML=resArr[0];
+       document.getElementById("prod1").innerHTML=resArr[1];
+       document.getElementById("prod2").innerHTML=resArr[2];
+       console.log(resArr[1]);
+       setTimeout(fetch,2000);
+       n=2;     
+
+     
+     }
+
+   
+   
+   }
+   function backoff(){
+     console.log("failed")
+     n=n*2;
+     console.log(n);
+     setTimeout(fetch,n*1000);
+   
+   }
+         
+  
+    </script>
+</html>
+

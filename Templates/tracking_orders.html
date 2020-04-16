@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <style>
+  .iconify { width: 20px; height: 20px; }
+  html{
+ scroll-behavior: smooth;
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{{url_for('static', filename='styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+    <meta charset="UTF-8">
+    <meta name="description" content="Fashi Template">
+    <meta name="keywords" content="Fashi, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TRACK ORDERS</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='shopping-cart/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='shopping-cart/css/font-awesome.min.css')}}" type="text/css">
+   
+    
+    <link rel="stylesheet" href="{{ url_for('static',filename='shopping-cart/css/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='shopping-cart/css/nice-select.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='shopping-cart/css/jquery-ui.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='shopping-cart/css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='shopping-cart/css/style.css')}}" type="text/css">
+</head>
+
+<body id="top">
+    
+  <!-- ################################################################################################ -->
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <div id="logo" class="fl_left">
+        <h1><a href="/index?name={{name[0]}}">SHOPIFY</a></h1>
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li ><a href="/index?name={{name[0]}}">HOME</a></li>
+          <li><a class="drop" href="#">Hello {{name[0]}}</a>
+            <ul>
+              <li class="active" ><a href="/track_order">TRACK ORDER</a></li>
+              <li><a href="/">LOGOUT</a></li>
+            </ul>
+          </li>
+          
+                                
+          <li><a href="#footer">CONTACT US</a></li>
+          <li  ><a href="/cart_details">CART
+                                    <span  class="iconify" data-icon="typcn-shopping-cart" data-inline="false"></span><sup style="font-color:pink;width:200%;height:200%;background-color: white;" >{{cart_no}}</sup>
+                                    
+
+                                </a></li>
+        </ul>
+      </nav>
+      <!-- ################################################################################################ -->
+    </header>
+  </div>
+    
+<p><br><br><br>
+    
+    <h1 style=" color: #b48608; font-family: 'Droid serif', serif; font-size: 30px; font-weight: 400; font-style: bold; line-height: 1px; margin: 0 0 12px; text-align: center; ">THANK YOU FOR SHOPPING WITH US , YOUR ORDER HAS BEEN PLACED.</h1>
+    
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr >
+                                    <th style="background-color: white; " >Image</th>
+                                    <th style="background-color: white; " >Product Name</th>
+                                    <th style="background-color: white; ">ORDER-ID</th>
+                                    <th style="background-color: white; ">STATUS</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in product %}
+                                <tr>
+                                    <td class="cart-pic first-row"><img src="{{url_for('static',filename='img/'+i[-2])}}" alt="image" style="width:50%;"></td>
+                                    <td class="cart-title first-row">
+                                        <h5>{{i[-1]}}</h5>
+                                    </td>
+                                    <td class="p-price first-row">{{i[1]}}</td>
+                                    <td class="qua-col first-row">
+                                        <div class="quantity">
+                                            
+                                                {{i[2]}}
+                                            
+                                        </div>
+                                    </td>
+                                 </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                           
+                            <div class="discount-coupon">
+                                
+                                 
+                             <div class="col-lg-4 o" style="background-color: #D55A77;">
+                            <div class="proceed-checkout" style="background-color: #D55A77;" >
+                                <a  style="background-color: #D55A77;" href="/index?name={{name[0]}}" class="primary-btn continue-shop">Continue_Shopping</a>
+                                
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 offset-lg-4">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+    <div class="wrapper bgded overlay coloured" style="background-color: pink; ">
+  <article class="hoc cta clear"> 
+    <!-- ################################################################################################ -->
+    
+    <!-- ################################################################################################ -->
+  </article>
+</div>
+
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">CONTACT US</h6>
+      <ul class="nospace btmspace-30 linklist contact">
+        <li><i class="fa fa-map-marker"></i>
+          <address>
+          BTM Layout &amp; 7th main, Bangalore, 560076
+          </address>
+        </li>
+        <li><i class="fa fa-phone"></i> +91 93471289132</li>
+        <li><i class="fa fa-envelope-o"></i> ecom@gmail.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Scared to buy online?</h6>
+      <p class="nospace btmspace-15">Carefully picked products. It is delivered by our trusted employees. The products are sold at your doorstep without the hassle of stepping out of your house. If you have any problem with the product, please feel free to send an email and you'll get a new product in exchange. T&C apply. </p>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">How to buy?</h6>
+      <p class="nospace btmspace-15">Click on the product you like and add to cart if you want to buy it later. Or click on buy now. There are a variety of products in this website. Choose the products you like and buy now. </p>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">New products?</h6>
+      <p class="nospace btmspace-15">To get notified about new products, please enter your name and email here.</p>
+      <form method="get" action="#">
+        <fieldset>
+          <legend>Newsletter:</legend>
+          <input class="btmspace-15" type="text" value="" placeholder="Name">
+          <input class="btmspace-15" type="text" value="" placeholder="Email">
+          
+        </fieldset>
+        </form>
+        <button   href="#" value="submit">Submit</button>
+      
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+
+    <!-- Js Plugins -->
+    <script src="{{url_for('static', filename='scripts/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/jquery.backtotop.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/jquery.mobilemenu.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/jquery.flexslider-min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/jquery-ui.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/jquery.countdown.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/jquery.zoom.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/jquery.dd.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/jquery.slicknav.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='shopping-cart/js/main.js')}}"></script>
+    <script src="https://code.iconify.design/1/1.0.5/iconify.min.js"></script>
+</body>
+
+</html>

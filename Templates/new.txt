@@ -1,0 +1,1 @@
+<img class="borderedbox inspace-10"  src="{{url_for('static', filename='img/phone.jpg')}}" style="border:none">; I-Phone Xs;Apple iPhone Xs Max (64GB) - Gold;

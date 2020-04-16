@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+  html{
+    .iconify { width: 20px; height: 20px; }
+  scroll-behavior: smooth;
+}
+</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <!-- CSS -->
+    <link href="{{url_for('static',filename='css/product/style.css') }}" rel="stylesheet">
+    <link href="{{url_for('static', filename='styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+    <meta name="robots" content="noindex,follow" />
+  <style>
+  input[type=button] {
+  background-color:black;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+  
+  
+
+input[name="color"]:hover {
+  background-color: white;
+  color: white;
+}
+}
+  </style>
+  </head>
+
+  <body>
+    <div class="wrapper row1">
+    <header id="header" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <div id="logo" class="fl_left">
+        <h1><a href="/index?name={{name}}">SHOPIFY</a></h1>
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li ><a href="/index?name={{name}}">HOME</a></li>
+          <li><a class="drop" href="#">Hello {{name}}</a>
+            <ul>
+              <li><a href="/track_order">TRACK ORDER</a></li>
+              <li><a href="/">LOGOUT</a></li>
+            </ul>
+          </li>
+          <li><a href="#footer" >CONTACT US</a></li>
+          <li ><a href="/cart_details">CART
+                                    <span  class="iconify" data-icon="typcn-shopping-cart" data-inline="false"></span><sup style="font-color:pink;width:200%;height:200%;background-color: white;" >{{cart_no}}</sup>
+                                    
+
+                                </a></li>
+          
+          
+        </ul>
+      </nav>
+      <!-- ################################################################################################ -->
+    </header>
+  </div>
+
+    <main class="container">
+      
+      <!-- Left Column / Headphones Image -->
+      <div class="left-column">
+        <img data-image="black" src="{{url_for('static',filename='img/' + image1) }}" alt="" style="width:150%;height:150%">
+        <img data-image="blue" src="{{url_for('static',filename='img/' + image2) }}" alt="" style="width:150%;height:150%">
+        <img data-image="red" class="active" src="{{url_for('static',filename='img/' + image3) }}" alt="" style="width:150%;height:150%">
+      </div>
+
+
+      <!-- Right Column -->
+      <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+          <span>{{category}}</span>
+          <h1>{{pname}}</h1>
+          <p>{{description}} </p>
+        </div>
+
+        <!-- Product Configuration -->
+        <div class="product-configuration">
+
+          <!-- Product Color -->
+          <div class="product-color">
+            <span>Images</span>
+
+            <div class="color-choose">
+              <div>
+          <input data-image="red" type="button" id="red" name="color" value="1" >
+        <label for="red"><span></span></label>
+              <!--  <input data-image="red" type="button" id="red" name="color" value="red" checked>
+                <label for="red"><span></span></label> -->
+              </div>
+              <div>
+                <input data-image="blue" type="button" id="blue" name="color" value="2">
+                <label for="blue"><span></span></label>
+              </div>
+              <div>
+                <input data-image="black" type="button" id="black" name="color" value="3">
+                <label for="black"><span></span></label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Cable Configuration -->
+          <div class="cable-config">
+            <div class="cable-choose">
+
+            <form action="/add_to_cart?productId={{id}}" method="POST">
+            <label >Quantity : </label>
+            <select id="quantity" name="quantity">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            </div>
+            </div>
+            <p><br></p>
+            <div class="product-price">
+          <span>&#8377 {{price}}</span>
+          <button type="submit" class="btn">Add to cart</button>
+        </div>
+        </form>
+
+        <!-- Product Pricing -->
+      </div>
+    </main>
+    <div class="wrapper row3">
+  <main class="hoc container clear">
+    
+    <p><br><br><br><br><br><br><br><br><br><br>
+      <hr class="btmspace-80">
+      <br><br><h3 class="heading">PRODUCTS YOU MAY LIKE</h3><br></p>
+    
+    <ul class="nospace group overview" id="products" >
+      {% for i in recom_product%}
+        <li class="one_third" style=" padding-bottom: 10000px;
+    margin-bottom: -10000px;">
+        <article><a href="#"><img src="{{url_for('static', filename='img/'+i[1])}}"  style="width:55%;max-height:12em;min-height:12em " alt=""></a>
+          <h6 class="heading">{{i[0]}}</h6>
+          <p style="min-height:3em;max-height: 3em ">{{i[2]}} &hellip;</p>
+          <footer class="nospace"><a class="btn" href="/product1?productId={{i[-1]}}">VIEW &raquo;</a></footer>
+        </article>
+      </li>
+      {% endfor%}
+    </ul>
+    
+    <p><br><br><br><br><br><br><br><br><br></p>
+
+  </main>
+
+  <div class="wrapper bgded overlay coloured" style="background-color: pink; ">
+  <article class="hoc cta clear"> 
+    <!-- ################################################################################################ -->
+  </article>
+</div>
+
+    <div class="wrapper row4" >
+  <footer id="footer" class="hoc clear"> 
+
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">CONTACT US</h6>
+      <ul class="nospace btmspace-30 linklist contact">
+        <li><i class="fa fa-map-marker"></i>
+          <address>
+          BTM Layout &amp; 7th main, Bangalore, 560076
+          </address>
+        </li>
+        <li><i class="fa fa-phone"></i> +91 93471289132</li>
+        <li><i class="fa fa-envelope-o"></i> ecom@gmail.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Scared to buy online?</h6>
+      <p class="nospace btmspace-15">Carefully picked products. It is delivered by our trusted employees. The products are sold at your doorstep without the hassle of stepping out of your house. If you have any problem with the product, please feel free to send an email and you'll get a new product in exchange. T&C apply. </p>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">How to buy?</h6>
+      <p class="nospace btmspace-15">Click on the product you like and add to cart if you want to buy it later. Or click on buy now. There are a variety of products in this website. Choose the products you like and buy now. </p>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">New products?</h6>
+      <p class="nospace btmspace-15">To get notified about new products, please enter your name and email here.</p>
+      <form method="post" action="#">
+        <fieldset>
+          <legend>Newsletter:</legend>
+          <input class="btmspace-15" type="text" value="" placeholder="Name">
+          <input class="btmspace-15" type="text" value="" placeholder="Email">
+          <button type="submit" value="submit">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="{{url_for('static',filename='js/script.js') }}" charset="utf-8"></script>
+    <script src="https://code.iconify.design/1/1.0.5/iconify.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+<img class="borderedbox inspace-10"  src="{{url_for('static', filename='img/shoe.jpg')}}" style="border:none">; Footwear;Ethics Mens Ultra Lite Mesh Casual Sports Shoes for Mens;
